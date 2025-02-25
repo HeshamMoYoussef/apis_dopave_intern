@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:omar_apis/data/data_source/api_service.dart';
 import 'package:omar_apis/presentation/manager/user_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,10 +16,8 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ElevatedButton(
-              child: FittedBox(child: Text('Get All Users')),
-
+              child: Text('Get All Users'),
               onPressed: () {
-                // ToDO : New User Function
                 context.read<UserCubit>().emitGetAllUsers();
                 Navigator.pushNamed(context, '/get_all_users');
               },
@@ -28,17 +25,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               child: Text('Create New User'),
-
               onPressed: () {
-                // ToDO : New User Function
-                context.read<UserCubit>().emitCreateNewUser(
-                  UserModel(
-                    name: 'amrr',
-                    email: 'amrr@gmail',
-                    gender: 'male',
-                    status: 'active',
-                  ),
-                );
                 Navigator.of(context).pushNamed('create_new_user');
               },
             ),

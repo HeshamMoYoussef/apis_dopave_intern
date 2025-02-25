@@ -5,9 +5,9 @@ import 'package:omar_apis/data/data_source/api_service.dart';
 import 'package:omar_apis/presentation/manager/user_cubit.dart';
 import 'package:omar_apis/presentation/manager/user_state.dart';
 
-class NewUserScreen extends StatelessWidget {
+class ResultNewUserScreen extends StatelessWidget {
   final newUser = UserModel();
-  NewUserScreen({super.key});
+  ResultNewUserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
