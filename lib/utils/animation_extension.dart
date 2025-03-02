@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 /// Extension methods for adding animations to widgets.
 extension WidgetAnimationExtension on Widget {
-  //? Slide Animations
+  //!? Slide Animations
   /// Animates a widget from right to left with a fade effect.
   Widget animateRightToLeft({
     Duration delay = const Duration(milliseconds: 500),
