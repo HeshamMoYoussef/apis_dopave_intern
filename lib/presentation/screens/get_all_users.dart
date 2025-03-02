@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:omar_apis/core/network_exceptions.dart';
+import 'package:omar_apis/utils/animation_extension.dart';
 import 'package:omar_apis/presentation/manager/user_cubit.dart';
 import 'package:omar_apis/presentation/manager/user_state.dart';
 import 'package:omar_apis/presentation/widgets/custom_indicator.dart';
 import 'package:omar_apis/presentation/widgets/dismissible_background_widget.dart';
-import 'package:omar_apis/utils/animation_extension.dart';
 
 class GetAllUsersScreen extends StatefulWidget {
   const GetAllUsersScreen({super.key});
@@ -47,20 +47,15 @@ class _GetAllUsersScreenState extends State<GetAllUsersScreen> {
         ],
       ),
       body: SafeArea(
-        child: BlocBuilder<UserCubit, ResultState<dynamic>>(
-          builder: (context, ResultState<dynamic> state) {
+        child: BlocBuilder<UserCubit, ResultState>(
+          builder: (context, ResultState state) {
             return state.when(
-              idle: () => CustomProgressIndicator(),
-              loading: () => CustomProgressIndicator(),
+              idle: () => const SizedBox(),
+              loading: () => const CustomProgressIndicator(),
               success: (listData) {
                 if (listData.isEmpty) {
                   context.read<UserCubit>().emitGetAllUsers();
-                  return const Center(
-                    child: Text(
-                      'No users found',
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                  );
+                  return const SizedBox();
                 }
                 return ListView.builder(
                   itemCount: listData.length,

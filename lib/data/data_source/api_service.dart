@@ -23,12 +23,12 @@ abstract class ApiService {
 
   // Delete User
   @DELETE('users/{id}')
-  Future<dynamic> deleteUser(@Path() String id);
+  Future deleteUser(@Path() String id);
 }
 
 //        Users Model //
 @JsonSerializable()
-class UserModel {
+class UserModel  {
   int? id;
   String? name;
   String? email;

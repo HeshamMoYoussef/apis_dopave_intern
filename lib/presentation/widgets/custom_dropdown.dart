@@ -19,6 +19,7 @@ class CustomDropdownFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       value: value,
       onChanged: onChanged,
       validator: validator,

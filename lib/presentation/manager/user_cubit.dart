@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:omar_apis/core/api_result.dart';
 import 'package:omar_apis/core/network_exceptions.dart';
-import 'package:omar_apis/data/repo_impl/repo_impl.dart';
 import 'package:omar_apis/data/data_source/api_service.dart';
+import 'package:omar_apis/data/repo_impl/repo_impl.dart';
 import 'package:omar_apis/presentation/manager/user_state.dart';
 
-class UserCubit extends Cubit<ResultState<dynamic>> {
+class UserCubit extends Cubit<ResultState> {
   final RepoImpl repoImpl;
   UserCubit(this.repoImpl) : super(const Idle());
 

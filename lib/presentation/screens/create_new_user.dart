@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:omar_apis/utils/app_validation.dart';
 import 'package:omar_apis/core/network_exceptions.dart';
-import 'package:omar_apis/utils/animation_extension.dart';
 import 'package:omar_apis/data/data_source/api_service.dart';
 import 'package:omar_apis/presentation/manager/user_cubit.dart';
 import 'package:omar_apis/presentation/manager/user_state.dart';
 import 'package:omar_apis/presentation/widgets/custom_dropdown.dart';
 import 'package:omar_apis/presentation/widgets/custom_form_field.dart';
+import 'package:omar_apis/utils/animation_extension.dart';
+import 'package:omar_apis/utils/app_validation.dart';
 
 class CreateNewUser extends StatefulWidget {
   const CreateNewUser({super.key});
@@ -30,6 +30,7 @@ class _CreateNewUserState extends State<CreateNewUser> {
     _emailController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -71,9 +72,9 @@ class _CreateNewUserState extends State<CreateNewUser> {
                     labelText: 'Select Your Gender',
                     value: _selectedGender,
                     onChanged: (value) {
-                      setState(() {
-                        _selectedGender = value; // Update selected gender
-                      });
+                      // setState(() {
+                      _selectedGender = value; // Update selected gender
+                      // });
                     },
                     dropdownItems: const [
                       DropdownMenuItem(
@@ -95,9 +96,9 @@ class _CreateNewUserState extends State<CreateNewUser> {
                     labelText: 'Select Your Status',
                     value: _selectedStatus,
                     onChanged: (value) {
-                      setState(() {
-                        _selectedStatus = value; // Update selected status
-                      });
+                      // setState(() {
+                      _selectedStatus = value; // Update selected status
+                      // });
                     },
                     dropdownItems: const [
                       DropdownMenuItem(
@@ -115,7 +116,7 @@ class _CreateNewUserState extends State<CreateNewUser> {
                   ),
                   const SizedBox(height: 24),
                   // Submit Button
-                  BlocConsumer<UserCubit, ResultState<dynamic>>(
+                  BlocConsumer<UserCubit, ResultState>(
                     listener: (context, state) {
                       state.when(
                         idle: () {},
@@ -129,10 +130,10 @@ class _CreateNewUserState extends State<CreateNewUser> {
                           // Clear the form fields after successful creation
                           _nameController.clear();
                           _emailController.clear();
-                          setState(() {
-                            _selectedGender = null;
-                            _selectedStatus = null;
-                          });
+                          // setState(() {
+                          _selectedGender = null;
+                          _selectedStatus = null;
+                          // });
                           // Refresh the user list and navigate back
                           context.read<UserCubit>().emitGetAllUsers();
                           Navigator.pop(context);
