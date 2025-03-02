@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 
 part 'api_service.g.dart';
 
@@ -49,7 +51,7 @@ Dio createAndSetupDio() {
   Dio dio = Dio();
   dio
     ..options.connectTimeout = const Duration(seconds: 10)
-    ..options.receiveTimeout = const Duration(seconds: 5)
+    ..options.receiveTimeout = const Duration(seconds: 10)
     ..options.sendTimeout = const Duration(seconds: 5)
     ..options.headers = {
       'Content-Type': 'application/json',
@@ -65,6 +67,7 @@ Dio createAndSetupDio() {
       error: true,
       requestHeader: false,
       responseHeader: false,
+      logPrint: (object) => log(object.toString()),
     ),
   );
   return dio;
